@@ -15,7 +15,7 @@ Feel free to use it but be aware that It's tailored to my personal preferences.
 
 Installation
 ==
-Make a backup of ~/.vim. Make sure you have curl and git installed and run:
+Make sure you have curl and git installed and run:
 
-<pre><code>$ git clone https://github.com/igno/vim ~/.vim && ~/.vim/setup.sh
+<pre><code>$ mv ~/.vim ~/.vim_backup_igno && git clone https://github.com/igno/vim ~/.vim && ~/.vim/setup.sh
 </code></pre>
