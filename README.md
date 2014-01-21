@@ -1,8 +1,21 @@
-vim
+My vim collection
 ===
 
-My personal vim config.
+This is my personal vim configuration. It basically just bundles the following plugins:
 
-Basic combination of vim plugins that I like. Feel free to use it but be aware that It's tailored to my personal preferenses.
+* https://github.com/tpope/vim-sensible.git
+* https://github.com/Shougo/neocomplcache.vim
+* https://github.com/kien/ctrlp.vim.git
+* https://github.com/tpope/vim-fugitive.git
+* https://github.com/bling/vim-airline
 
-Use setup.sh to automatically setup a vim configuration.
+With some personal overrides of course.
+
+Feel free to use it but be aware that It's tailored to my personal preferences.
+
+Installation
+==
+Make a backup of ~/.vim. Make sure you have curl and git installed and run:
+
+<pre><code>$ git clone https://github.com/igno/vim ~/.vim && ~/.vim/setup.sh
+</code></pre>
