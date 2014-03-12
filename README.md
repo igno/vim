@@ -8,6 +8,8 @@ This is my personal vim configuration. It basically just bundles the following p
 * https://github.com/kien/ctrlp.vim.git
 * https://github.com/tpope/vim-fugitive.git
 * https://github.com/bling/vim-airline
+* https://github.com/scrooloose/nerdtree
+* https://github.com/fholgado/minibufexpl.vim
 
 With some personal overrides of course.
 
