@@ -28,6 +28,14 @@ if [ ! -d ~/.vim/bundle/vim-sensible ] ; then
 	git clone git://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
 fi
 
+if [ ! -d ~/.vim/bundle/nerdtree.vim ] ; then
+	git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.vim
+fi
+
+if [ ! -d ~/.vim/bundle/minibufexpl.vim ] ; then
+	git clone https://github.com/fholgado/minibufexpl.vim.git ~/.vim/bundle/minibufexpl.vim
+fi
+
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
 	if [  -e $VIMRC ] ; then

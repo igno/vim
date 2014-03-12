@@ -6,6 +6,7 @@ runtime! plugin/sensible.vim
 
 "plugin configuration
 let g:ctrlp_map = '<c-o>'
+map <C-n> :NERDTreeToggle<CR>
 
 "vim configuration (overriding sensible)
 set nocompatible
@@ -18,6 +19,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set showcmd
+set hidden
 
 "this is a bit ugly..
 set shiftwidth=4
@@ -27,8 +29,16 @@ set tabstop=4
 set backup
 set backupdir=~/.vim/backup/
 
-map <S-h> gT
-map <S-l> gt
+"switch between buffers with shift + h and l
+map <S-h> :bp<CR>
+map <S-l> :bn<CR>
+
+"close buffer with ctrl + c
+map <C-c> :bp<bar>sp<bar>bn<bar>bd<CR>
+
+map <A-h> vertical resize +10<CR>
+map <A-l> vertical resize -10<CR>
+let g:miniBufExplMapWindowNavVim = 1
 
 if has("gui_running")
 	" See ~/.gvimrc
