@@ -20,6 +20,8 @@ set smartcase
 set hlsearch
 set showcmd
 set hidden
+set wildmode=longest,list,full
+set wildmenu
 
 "this is a bit ugly..
 set shiftwidth=4
