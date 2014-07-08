@@ -5,7 +5,7 @@ mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/bundle
 
 echo "Installing autoload of pathogen.vim"
-curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo "Installing bundle plugins"
 if [ ! -d ~/.vim/bundle/ctrlp.vim ] ; then
