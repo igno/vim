@@ -36,6 +36,10 @@ if [ ! -d ~/.vim/bundle/minibufexpl.vim ] ; then
 	git clone https://github.com/fholgado/minibufexpl.vim.git ~/.vim/bundle/minibufexpl.vim
 fi
 
+if [ ! -d ~/.vim/bundle/vim-chef.vim ] ; then
+	git clone https://github.com/dougireton/vim-chef.git ~/.vim/bundle/vim-chef.vim
+fi
+
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
 	if [  -e $VIMRC ] ; then
