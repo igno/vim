@@ -6,6 +6,8 @@ runtime! plugin/sensible.vim
 
 "plugin configuration
 let g:ctrlp_map = '<c-o>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|^build|dist)|(\.(swp|ico|git|svn))$'
 map <C-n> :NERDTreeToggle<CR>
 
 "vim configuration (overriding sensible)
@@ -68,5 +70,4 @@ nmap <F4> \tp
 imap <F4> <C-O>\tp
 set pastetoggle=<F4>
 
-"include neocomplcache.conf
 source ~/.vim/neocomplcache.conf
