@@ -40,6 +40,10 @@ if [ ! -d ~/.vim/bundle/vim-chef.vim ] ; then
 	git clone https://github.com/dougireton/vim-chef.git ~/.vim/bundle/vim-chef.vim
 fi
 
+if [ ! -d ~/.vim/bundle/editorconfig ] ; then
+	git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig
+fi
+
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
 	if [  -e $VIMRC ] ; then
