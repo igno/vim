@@ -44,6 +44,10 @@ if [ ! -d ~/.vim/bundle/editorconfig ] ; then
 	git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig
 fi
 
+if [ ! -d ~/.vim/bundle/vim-go ] ; then
+	git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+fi
+
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
 	if [  -e $VIMRC ] ; then
