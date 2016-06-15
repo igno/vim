@@ -71,3 +71,5 @@ imap <F4> <C-O>\tp
 set pastetoggle=<F4>
 
 source ~/.vim/neocomplcache.conf
+
+set t_ut=
