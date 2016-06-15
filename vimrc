@@ -46,17 +46,17 @@ let g:miniBufExplMapWindowNavVim = 1
 
 if has("gui_running")
 	" See ~/.gvimrc
-   set guifont=Monospace\ 10  " use this font
-   set lines=50       " height = 50 lines
-   set columns=100        " width = 100 columns
-   set background=light   " adapt colors for background
-   set selectmode=mouse,key,cmd
-   set keymodel=
+	set guifont=Monospace\ 10  " use this font
+	set lines=50       " height = 50 lines
+	set columns=100        " width = 100 columns
+	set background=light   " adapt colors for background
+	set selectmode=mouse,key,cmd
+	set keymodel=
 else
-        colorscheme elflord    " use this color scheme
-"       colorscheme delek    " use this color scheme
-        set background=dark        " adapt colors for background
-"       set background=light        " adapt colors for background
+	colorscheme elflord    " use this color scheme
+	"colorscheme delek    " use this color scheme
+	set background=dark        " adapt colors for background
+	"set background=light        " adapt colors for background
 endif
 
 
