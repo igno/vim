@@ -73,3 +73,7 @@ set pastetoggle=<F4>
 source ~/.vim/neocomplcache.conf
 
 set t_ut=
+
+if !empty(glob("~/.vim/local_overrides.conf"))
+	source ~/.vim/local_overrides.conf
+endif
