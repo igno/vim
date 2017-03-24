@@ -7,7 +7,7 @@ runtime! plugin/sensible.vim
 "plugin configuration
 let g:ctrlp_map = '<c-o>'
 let g:ctrlp_max_files = 0
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|build/|cache/cookbooks|dist|backup/)|(\.(swp|ico|git|svn|bundle))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|build/|cache/cookbooks|dist|backup/)|(\.(swp|ico|git|svn|bundle|pyc))$'
 map <C-n> :NERDTreeToggle<CR>
 
 "vim configuration (overriding sensible)
@@ -29,6 +29,8 @@ set wildmenu
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+set clipboard=unnamed
 
 set backup
 set backupdir=~/.vim/backup/
