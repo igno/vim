@@ -52,6 +52,10 @@ if [ ! -d ~/.vim/bundle/syntastic ] ; then
 	git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
 fi
 
+if [ ! -d ~/.vim/bundle/yaml-vim ] ; then
+	git clone https://github.com/mrk21/yaml-vim.git ~/.vim/bundle/yaml-vim
+fi
+
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
 	if [  -e $VIMRC ] ; then
