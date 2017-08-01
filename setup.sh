@@ -1,60 +1,32 @@
 #!/bin/bash
-echo "Setting up folder structure in ~/.vim/"
-mkdir -p ~/.vim/backup
-mkdir -p ~/.vim/autoload
-mkdir -p ~/.vim/bundle
+VIM_DIR=~/.vim
+SCRIPT_DIR=$(dirname $(readlink -f "$0"))
+
+echo "Setting up folder structure in $VIM_DIR/"
+mkdir -p $VIM_DIR/backup
+mkdir -p $VIM_DIR/autoload
+mkdir -p $VIM_DIR/bundle
 
 echo "Installing autoload of pathogen.vim"
-curl -LSso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -LSso $VIM_DIR/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
-echo "Installing bundle plugins"
-if [ ! -d ~/.vim/bundle/ctrlp.vim ] ; then
-	git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-fi
+echo -n "Installing bundle plugins... "
+BUNDLE_PLUGINS="kien/ctrlp.vim Shougo/neocomplcache.vim tpope/vim-fugitive bling/vim-airline tpope/vim-sensible scrooloose/nerdtree fholgado/minibufexpl.vim dougireton/vim-chef editorconfig/editorconfig-vim fatih/vim-go scrooloose/syntastic mrk21/yaml-vim"
 
-if [ ! -d ~/.vim/bundle/neocomplcache.vim ] ; then
-	git clone https://github.com/Shougo/neocomplcache.vim ~/.vim/bundle/neocomplcache.vim
-fi
+for PLUGIN in $BUNDLE_PLUGINS; do
+	PLUGIN_NAME=`basename $PLUGIN`
+	PLUGIN_DIR="$VIM_DIR/bundle/$PLUGIN_NAME"
+	echo -n "$PLUGIN_NAME "
+	if [ -d $PLUGIN_DIR ] ; then
+		cd $PLUGIN_DIR && git pull &>/dev/null && cd - &>/dev/null
+	else
+		git clone https://github.com/${PLUGIN}.git $VIM_DIR/bundle/$PLUGIN_NAME
+	fi
+done
+echo "done."
 
-if [ ! -d ~/.vim/bundle/vim-fugitive.vim ] ; then
-	git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.vim
-fi
-
-if [ ! -d ~/.vim/bundle/vim-airline.vim ] ; then
-	git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline.vim
-fi
-
-if [ ! -d ~/.vim/bundle/vim-sensible ] ; then
-	git clone git://github.com/tpope/vim-sensible.git ~/.vim/bundle/vim-sensible
-fi
-
-if [ ! -d ~/.vim/bundle/nerdtree.vim ] ; then
-	git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree.vim
-fi
-
-if [ ! -d ~/.vim/bundle/minibufexpl.vim ] ; then
-	git clone https://github.com/fholgado/minibufexpl.vim.git ~/.vim/bundle/minibufexpl.vim
-fi
-
-if [ ! -d ~/.vim/bundle/vim-chef.vim ] ; then
-	git clone https://github.com/dougireton/vim-chef.git ~/.vim/bundle/vim-chef.vim
-fi
-
-if [ ! -d ~/.vim/bundle/editorconfig ] ; then
-	git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/bundle/editorconfig
-fi
-
-if [ ! -d ~/.vim/bundle/vim-go ] ; then
-	git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-fi
-
-if [ ! -d ~/.vim/bundle/syntastic ] ; then
-	git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
-fi
-
-if [ ! -d ~/.vim/bundle/yaml-vim ] ; then
-	git clone https://github.com/mrk21/yaml-vim.git ~/.vim/bundle/yaml-vim
-fi
+echo "Copying conf files under conf/"
+cp -r $SCRIPT_DIR/conf/* $VIM_DIR/
 
 VIMRC=~/.vimrc
 if [ ! -h $VIMRC ] ; then
@@ -63,8 +35,9 @@ if [ ! -h $VIMRC ] ; then
 		echo "Making backup of old $VIMRC to $BACKUP_FILE"
 		mv $VIMRC $BACKUP_FILE
 	fi
-	echo "Symlinking ~/.vim/vimrc to $VIMRC"
-	ln -s ~/.vim/vimrc $VIMRC
+	VIMRC_SOURCE=$SCRIPT_DIR/vimrc
+	echo "Symlinking $VIMRC to $VIMRC_SOURCE"
+	ln -sf $VIMRC_SOURCE $VIMRC
 fi
 
-echo "Done"
+echo "all done \\o/"
