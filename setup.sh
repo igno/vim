@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 VIM_DIR=~/.vim
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 
