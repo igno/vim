@@ -81,3 +81,9 @@ set t_ut=
 if !empty(glob("~/.vim/local_overrides.conf"))
 	source ~/.vim/local_overrides.conf
 endif
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
