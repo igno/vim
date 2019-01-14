@@ -11,6 +11,7 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|cache/cookbooks|dist|backup/)|(
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1
 
 "vim configuration (overriding sensible)
 set nocompatible
