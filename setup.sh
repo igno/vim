@@ -4,9 +4,7 @@ VIM_DIR=~/.vim
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 
 echo "Setting up folder structure in $VIM_DIR/"
-mkdir -p $VIM_DIR/backup
-mkdir -p $VIM_DIR/autoload
-mkdir -p $VIM_DIR/bundle
+mkdir -p $VIM_DIR/backup $VIM_DIR/undo $VIM_DIR/swp $VIM_DIR/autoload $VIM_DIR/bundle
 
 echo "Installing autoload of pathogen.vim"
 curl -LSso $VIM_DIR/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim

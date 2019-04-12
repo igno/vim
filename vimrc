@@ -37,6 +37,8 @@ set clipboard=unnamed
 
 set backup
 set backupdir=~/.vim/backup/
+set undodir=~/.vim/undo//
+set directory=~/.vim/swp//
 
 "switch between buffers with shift + h and l
 map <S-h> :bp<CR>
