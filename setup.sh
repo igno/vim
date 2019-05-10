@@ -10,7 +10,7 @@ echo "Installing autoload of pathogen.vim"
 curl -LSso $VIM_DIR/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo -n "Installing bundle plugins... "
-BUNDLE_PLUGINS="kien/ctrlp.vim Shougo/neocomplcache.vim tpope/vim-fugitive bling/vim-airline tpope/vim-sensible scrooloose/nerdtree fholgado/minibufexpl.vim dougireton/vim-chef editorconfig/editorconfig-vim fatih/vim-go scrooloose/syntastic mrk21/yaml-vim junegunn/vim-easy-align hashivim/vim-terraform"
+BUNDLE_PLUGINS="kien/ctrlp.vim tpope/vim-fugitive bling/vim-airline tpope/vim-sensible scrooloose/nerdtree fholgado/minibufexpl.vim dougireton/vim-chef editorconfig/editorconfig-vim fatih/vim-go scrooloose/syntastic mrk21/yaml-vim junegunn/vim-easy-align hashivim/vim-terraform neoclide/coc.nvim"
 
 for PLUGIN in $BUNDLE_PLUGINS; do
 	PLUGIN_NAME=`basename $PLUGIN`
