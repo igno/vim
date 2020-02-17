@@ -39,4 +39,14 @@ if [ ! -h $VIMRC ] ; then
 	ln -sf $VIMRC_SOURCE $VIMRC
 fi
 
+hash go &>/dev/null
+if [[ $? == 0 ]]; then
+  export GO111MODULE=on
+  go get golang.org/x/tools/gopls@latest
+else
+  echo "To get coc integration working with golang, install go and rerun this script."
+fi
+
+echo "To initialize coc run ':call coc#util#install()' in vim."
+echo "Install bash language server: 'sudo npm i -g bash-language-server'"
 echo "all done \\o/"
