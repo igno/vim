@@ -28,6 +28,8 @@ set hidden
 set wildmode=longest,list,full
 set wildmenu
 set termguicolors
+set splitbelow
+set splitright
 
 "this is a bit ugly..
 set shiftwidth=4
