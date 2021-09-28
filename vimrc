@@ -27,6 +27,7 @@ set showcmd
 set hidden
 set wildmode=longest,list,full
 set wildmenu
+set termguicolors
 
 "this is a bit ugly..
 set shiftwidth=4
@@ -60,7 +61,7 @@ if has("gui_running")
 	set selectmode=mouse,key,cmd
 	set keymodel=
 else
-	colorscheme elflord    " use this color scheme
+	colorscheme onedark
 	"colorscheme delek    " use this color scheme
 	set background=dark        " adapt colors for background
 	"set background=light        " adapt colors for background
