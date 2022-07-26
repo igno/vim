@@ -1,6 +1,10 @@
 #!/bin/bash
-set -e
+[[ "${TRACE}" ]] && set -x
+set -eou pipefail
+shopt -s nullglob
+
 VIM_DIR=~/.vim
+BUNDLE_DIR="${VIM_DIR}/bundle"
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 
 echo "Setting up folder structure in $VIM_DIR/"
@@ -10,19 +14,36 @@ echo "Installing autoload of pathogen.vim"
 curl -LSso $VIM_DIR/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 echo -n "Installing bundle plugins... "
-BUNDLE_PLUGINS="kien/ctrlp.vim tpope/vim-fugitive bling/vim-airline tpope/vim-sensible scrooloose/nerdtree fholgado/minibufexpl.vim dougireton/vim-chef editorconfig/editorconfig-vim fatih/vim-go scrooloose/syntastic mrk21/yaml-vim junegunn/vim-easy-align hashivim/vim-terraform neoclide/coc.nvim derekwyatt/vim-scala henrik/vim-indexed-search joshdick/onedark.vim"
-
+BUNDLE_PLUGINS="ctrlpvim/ctrlp.vim tpope/vim-fugitive bling/vim-airline tpope/vim-sensible scrooloose/nerdtree bling/vim-bufferline editorconfig/editorconfig-vim fatih/vim-go dense-analysis/ale mrk21/yaml-vim junegunn/vim-easy-align hashivim/vim-terraform neoclide/coc.nvim derekwyatt/vim-scala henrik/vim-indexed-search joshdick/onedark.vim iamcco/markdown-preview.nvim"
 for PLUGIN in $BUNDLE_PLUGINS; do
 	PLUGIN_NAME=`basename $PLUGIN`
-	PLUGIN_DIR="$VIM_DIR/bundle/$PLUGIN_NAME"
+	PLUGIN_DIR="$BUNDLE_DIR/$PLUGIN_NAME"
 	echo -n "$PLUGIN_NAME "
 	if [ -d $PLUGIN_DIR ] ; then
 		cd $PLUGIN_DIR && git pull &>/dev/null && cd - &>/dev/null
 	else
-		git clone https://github.com/${PLUGIN}.git $VIM_DIR/bundle/$PLUGIN_NAME
+		git clone https://github.com/${PLUGIN}.git $BUNDLE_DIR/$PLUGIN_NAME
 	fi
 done
 echo "done."
+
+echo "removing unused plugins"
+for installed_plugin in $(ls -d $BUNDLE_DIR/*/); do
+  found=0
+  for plugin_to_install in $BUNDLE_PLUGINS; do
+    if [[ "$(basename $installed_plugin)" == "$(basename $plugin_to_install)" ]]; then
+      found=1
+    fi
+  done
+  if [ $found -eq 0 ]; then
+    old_plugins="${VIM_DIR}/old_plugins"
+    if [ ! -d $old_plugins ]; then
+      mkdir $old_plugins
+    fi
+    echo "  moving ${installed_plugin} to ${old_plugins}"
+    mv "${installed_plugin}" "${old_plugins}/$(basename $installed_plugin)"
+  fi
+done
 
 echo "Copying conf files under conf/"
 cp -r $SCRIPT_DIR/conf/* $VIM_DIR/
