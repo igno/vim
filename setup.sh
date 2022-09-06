@@ -62,8 +62,7 @@ fi
 
 hash go &>/dev/null
 if [[ $? == 0 ]]; then
-  export GO111MODULE=on
-  go get golang.org/x/tools/gopls@latest
+  go install golang.org/x/tools/gopls@latest
 else
   echo "To get coc integration working with golang, install go and rerun this script."
 fi
