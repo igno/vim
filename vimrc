@@ -7,7 +7,7 @@ runtime! plugin/sensible.vim
 "plugin configuration
 let g:ctrlp_map = '<c-o>'
 let g:ctrlp_max_files = 0
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|cache/cookbooks|dist|backup/)|(\.(swp|ico|git|svn|bundle|pyc))$'
+let g:ctrlp_custom_ignore = '\v[\/](target|node_modules|cache/cookbooks|dist|backup/)|(\.(swp|ico|git|svn|bundle|pyc))$'
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
