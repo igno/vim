@@ -18,7 +18,7 @@ set nocompatible
 set number
 set ruler
 set noerrorbells
-set nowrap
+set wrap
 set noexpandtab
 set ignorecase
 set smartcase
